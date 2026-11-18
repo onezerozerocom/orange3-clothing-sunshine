@@ -359,10 +359,10 @@
 <style>
   /* ── v2: 광고비-매출 v3 · 수면시간-비만율 v3와 같은 정리 — 바탕은 다른 웹앱과 같은 베이지, 상단바만 하늘색, 강조색은 진한 파랑 ── */
   :root {
-    --bg: #f6f4ee; --paper: #ffffff; --field: #f3f0e8; --line: #e2ddd1; --line-2: #cfc8b8;
+    --bg: #ffffff; --paper: #ffffff; --field: #eaf4fc; --line: #d3e5f3; --line-2: #b7d2ea;   /* 바탕: 하얀색, 칸·표 머리·입력칸: 연한 하늘색 */
     --ink: #18212c; --ink-2: #3a4553; --muted: #5f6b7a;
     --accent: #1d4f8a; --accent-weak: #e4ebf5; --accent-ink: #ffffff;   /* 강조색: 상단바 아래 줄과 같은 진한 파랑 */
-    --gold: var(--accent); --gold-weak: var(--field); --warn: #9a6a00; --warn-weak: #fbf3dd;
+    --gold: var(--accent); --gold-weak: var(--field); --warn: #9a6a00; --warn-weak: #e3f0fb;
     --hero: #2f86c6; --hero-2: #5aaee6; --hero-ink: #ffffff; --hero-muted: #e2f0fb;   /* 상단바: 하늘색 */
   }
   @media (prefers-color-scheme: dark) {
@@ -444,6 +444,9 @@
   table.range-tbl th, table.range-tbl td { width: 25%; text-align: center; }
   table.range-tbl td input[type=number] { margin: 0 auto; display: block; }
   .wear b { font-family: var(--body); font-weight: 700; }
+  .attr-desc th:first-child, .attr-desc td:first-child { text-align: center; }   /* 데이터셋 '각 속성의 뜻' 표: 속성 칸만 가운데 */
+  th.sil-h { text-align: center; }   /* 실루엣 점수 표: 군집 수 k · 실루엣 점수 가운데 */
+  th.sil-row { background: var(--paper); border-bottom: 0; }   /* 실루엣 점수 줄 이름 칸은 하얀 바탕, 맨 아랫줄이라 아래 선 없음 */
   .tprog { grid-template-columns: repeat(2, minmax(0, 1fr)); }   /* 과제가 두 개 */   /* 기온별 옷차림 표: 온도 줄도 '한여름'과 같은 본문 글꼴 */
 
   /* 선택 버튼: 고르기 전에도 칸마다 테두리가 보이게 */
@@ -637,8 +640,8 @@
     <div class="sub">
       <p class="sub-t"><span class="n">(1)</span><span>군집 수를 <b>시작 2 ~ 끝 8</b>로 두었을 때 나오는 실루엣 점수를 적어 보세요.</span></p>
       <div class="tw"><table class="mt">
-        <tr><th class="l">군집 수 k</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
-        <tr><td class="l">실루엣 점수</td><td><input type="number" step="any" data-k="s2" aria-label="k=2 실루엣 점수"></td><td><input type="number" step="any" data-k="s3" aria-label="k=3 실루엣 점수"></td><td><input type="number" step="any" data-k="s4" aria-label="k=4 실루엣 점수"></td><td><input type="number" step="any" data-k="s5" aria-label="k=5 실루엣 점수"></td><td><input type="number" step="any" data-k="s6" aria-label="k=6 실루엣 점수"></td><td><input type="number" step="any" data-k="s7" aria-label="k=7 실루엣 점수"></td><td><input type="number" step="any" data-k="s8" aria-label="k=8 실루엣 점수"></td></tr>
+        <tr><th class="sil-h">군집 수 k</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
+        <tr><th class="sil-h sil-row">실루엣 점수</th><td><input type="number" step="any" data-k="s2" aria-label="k=2 실루엣 점수"></td><td><input type="number" step="any" data-k="s3" aria-label="k=3 실루엣 점수"></td><td><input type="number" step="any" data-k="s4" aria-label="k=4 실루엣 점수"></td><td><input type="number" step="any" data-k="s5" aria-label="k=5 실루엣 점수"></td><td><input type="number" step="any" data-k="s6" aria-label="k=6 실루엣 점수"></td><td><input type="number" step="any" data-k="s7" aria-label="k=7 실루엣 점수"></td><td><input type="number" step="any" data-k="s8" aria-label="k=8 실루엣 점수"></td></tr>
       </table></div>
       <div class="check" id="silCheck"></div>
       <p class="tip"><b>실루엣 점수</b>는 −1부터 1 사이의 값으로, 1에 가까울수록 같은 군집끼리는 가깝고 다른 군집과는 잘 떨어져 있다는 뜻이에요.</p>
@@ -827,8 +830,8 @@
     <div class="sub">
       <p class="sub-t"><span class="n">(1)</span><span>특성을 평균기온 · 일조합 · 평균풍속 세 개로 두고, 군집 수를 <b>시작 2 ~ 끝 8</b>로 두었을 때 나오는 실루엣 점수를 적어 보세요.</span></p>
       <div class="tw"><table class="mt">
-        <tr><th class="l">군집 수 k</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
-        <tr><td class="l">실루엣 점수</td><td><input type="number" step="any" data-k="t2" aria-label="세 특성 k=2 실루엣 점수"></td><td><input type="number" step="any" data-k="t3" aria-label="세 특성 k=3 실루엣 점수"></td><td><input type="number" step="any" data-k="t4" aria-label="세 특성 k=4 실루엣 점수"></td><td><input type="number" step="any" data-k="t5" aria-label="세 특성 k=5 실루엣 점수"></td><td><input type="number" step="any" data-k="t6" aria-label="세 특성 k=6 실루엣 점수"></td><td><input type="number" step="any" data-k="t7" aria-label="세 특성 k=7 실루엣 점수"></td><td><input type="number" step="any" data-k="t8" aria-label="세 특성 k=8 실루엣 점수"></td></tr>
+        <tr><th class="sil-h">군집 수 k</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
+        <tr><th class="sil-h sil-row">실루엣 점수</th><td><input type="number" step="any" data-k="t2" aria-label="세 특성 k=2 실루엣 점수"></td><td><input type="number" step="any" data-k="t3" aria-label="세 특성 k=3 실루엣 점수"></td><td><input type="number" step="any" data-k="t4" aria-label="세 특성 k=4 실루엣 점수"></td><td><input type="number" step="any" data-k="t5" aria-label="세 특성 k=5 실루엣 점수"></td><td><input type="number" step="any" data-k="t6" aria-label="세 특성 k=6 실루엣 점수"></td><td><input type="number" step="any" data-k="t7" aria-label="세 특성 k=7 실루엣 점수"></td><td><input type="number" step="any" data-k="t8" aria-label="세 특성 k=8 실루엣 점수"></td></tr>
       </table></div>
       <div class="check" id="sil3Check"></div>
     </div>
